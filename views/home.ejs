@@ -1,0 +1,103 @@
+<html>
+<head>
+	 
+<script src="/js/jquery.min.js"></script>
+<script src="/js/angular.min.js"></script>
+<link ref="stylesheet" href="/styles/bootstrap.min.css">
+
+<script src="/js/app.js"></script>
+<script src="/js/product.js"></script>
+</head>
+<body ng-app="shoppingcart" ng-controller="prodcutCtrl">
+ 
+		<div class="container">
+		<h1>node-Angular</h1>
+		<div>
+			<table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th>Edit</th>
+			      <th>Name</th>
+			      <th>Product Image</th>
+			      <th>Price</th>			   
+			      <th>Delete</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr ng-repeat="x in Product">
+			      <td>
+			        <button class="btn" ng-click="editProduct(x.ProductId)">
+			          <span class="glyphicon glyphicon-pencil"></span>  Edit
+			        </button>
+			      </td>
+			      <td>{{ x.ProductName }}</td>
+	 				<td><img class="img-responsive" ng-src="{{x.ProductImage}}" width="100" height="30"></td>
+	 				<!-- <td><img class="img-responsive" src ="/images/a1.jpg" width="100" height="30"></td> -->
+			      <td>{{ x.Price }}</td>
+			     
+			      <td>
+			        <button class="btn" ng-click="deleteProduct(x.ProductId)">
+			          <span class="glyphicon glyphicon-leaf"></span>  Delete
+			        </button>
+			      </td>
+			    </tr>
+			  </tbody>
+			</table> 
+		</div>
+
+
+
+		<h1 id="action">Create Product</h1>
+ 
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label class="col-sm-2 control-label" >Product Name:</label>
+				<div class="col-sm-10"  >
+				<input type="text" ng-model="PName"   placeholder="Product Name" required/>
+					<input type="text" hidden="true" ng-model="PId">
+				<input type="text" hidden="true" ng-model="PImage"> 
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label" >Product image:</label>
+				<div class="col-sm-10"  >
+			 		 <input type = "file"  name="myfile" file-model = "myFile"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label" >Price:</label>
+				<div class="col-sm-10"  >
+				<input type="text" ng-model="PPrice"   placeholder="Price:" required/>
+				</div>
+			</div>
+ 
+		</form>
+		<hr>
+		<!-- 	<button class="btn btn-success" ng-click="createUser()">
+			<span class="glyphicon glyphicon-user"></span>  Create New User
+			</button> -->
+
+					<button class="btn btn-success" ng-click="createProduct()"  ng-disabled="isProcessing">
+			<span class="glyphicon glyphicon-user"></span>  Create New User
+			</button>
+					<button class="btn btn-success" ng-click="updateProduct()"  ng-disabled="isProcessing1">
+			<span class="glyphicon glyphicon-user"></span>  Save Changes
+			</button>
+
+ 
+<!-- 
+ <button ng-click="method = 'create'; title = 'Create'>create</button>
+<button ng-click="method = 'update'; title = 'Update'>update</button>
+
+<button ng-click="create(param)">{{ title }}</button>
+<button ng-click="update(param)">{{ title }}</button> -->
+	<!-- 	<button ng-click="this[method](param)">{{ title }}</button> -->
+	</div>
+
+</body>
+
+</html>
+
+
+
+ 
